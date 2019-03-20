@@ -1,22 +1,19 @@
-<html>
-    <head>
-        <title>Anmol's Web Gallery</title>
-    </head>
-    <body>
+{% extends 'webgallery/base.html' %}
 
+{% block content %}
+                {% for post in posts %}
+              <div class = "post">
 
-<div>
-    <h1><a href="/">My Web Gallery</a></h1>
-</div>
-
-{% for post in posts %}
-    <div>
         <h2><a href="">{{ post.title }}</a></h2>
-        <p>published: {{ post.published_date }}</p>
-
-        <img src="{{ post.picture.url }}">
+        <div class = "date">
+        <p>Published: {{ post.published_date }}</p>
+        </div>
+        <div class = "ima">
+        <img src="{{ post.picture.url }}" height = "300" width = "300">
+        </div>
         <p>{{ post.description|linebreaksbr }}</p>
-    </div>
-{% endfor %}
-</body>
-</html>
+      </div>
+      <hr class="style14">
+      <br>
+      {% endfor %}
+{% endblock %}
